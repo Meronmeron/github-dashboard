@@ -11,14 +11,22 @@ export default function SettingsPage() {
   const { theme, setTheme } = useTheme();
   const settings = useSelector((state: RootState) => state.settings);
   const [username, setUsername] = useState(settings.githubUsername);
+  const [showNotification, setShowNotification] = useState(false);
 
   const handleUsernameSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(setGithubUsername(username));
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 3000); // Hide after 3 seconds
   };
 
   return (
     <div className="space-y-6">
+      {showNotification && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg transition-all">
+          Username updated successfully!
+        </div>
+      )}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
         <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
           Appearance
