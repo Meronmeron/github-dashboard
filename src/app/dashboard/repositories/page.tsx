@@ -88,7 +88,7 @@ export default function RepositoriesPage() {
           <div className="space-y-4">
             {repos.map((repo) => (
               <div
-                key={repo.id}
+                key={`${repo.id}-${repo.name}`}
                 className="border dark:border-gray-700 rounded-lg p-4"
               >
                 <h3 className="font-medium text-gray-900 dark:text-white">
