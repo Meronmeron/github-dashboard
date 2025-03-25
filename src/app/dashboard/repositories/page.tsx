@@ -24,7 +24,18 @@ export default function RepositoriesPage() {
     try {
       setLoading(true);
       const newRepos = await fetchUserRepos(githubUsername, page);
-      setRepos((prev) => [...prev, ...newRepos]);
+      // Filter out duplicates based on id and name
+      setRepos((prev) => {
+        const uniqueRepos = [...prev];
+        newRepos.forEach((repo: Repository) => {
+          if (
+            !uniqueRepos.some((r) => r.id === repo.id || r.name === repo.name)
+          ) {
+            uniqueRepos.push(repo);
+          }
+        });
+        return uniqueRepos;
+      });
       setHasMore(newRepos.length === 30);
     } catch (err) {
       setError("Failed to fetch repositories");
@@ -103,7 +114,8 @@ export default function RepositoriesPage() {
                     {repo.language && <span>🔵 {repo.language}</span>}
                   </div>
                   <span className="text-gray-400">
-                    Updated: {new Date(repo.updated_at).toLocaleDateString()}
+                    Updated:{" "}
+                    {new Date(repo.updated_at).toISOString().split("T")[0]}
                   </span>
                 </div>
               </div>
