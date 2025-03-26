@@ -61,13 +61,11 @@ export default function RepositoriesPage() {
   }));
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-            Language Distribution
-          </h2>
-          <div className="h-64">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 sm:p-6">
+          <h2 className="text-xl font-semibold mb-4">Language Distribution</h2>
+          <div className="h-64 sm:h-80">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -92,10 +90,8 @@ export default function RepositoriesPage() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-            Repository List
-          </h2>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 sm:p-6">
+          <h2 className="text-xl font-semibold mb-4">Repository List</h2>
           <div className="space-y-4">
             {repos.map((repo) => (
               <div

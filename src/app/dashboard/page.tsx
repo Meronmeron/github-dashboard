@@ -73,19 +73,18 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-      <div className="space-y-6">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="space-y-4 sm:space-y-6">
         {profile && (
           <>
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-              <div className="flex items-center space-x-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row items-center sm:space-x-6">
                 <Image
                   src={profile.avatar_url}
                   alt={profile.login}
                   width={100}
                   height={100}
-                  className="rounded-full"
+                  className="rounded-full mb-4 sm:mb-0"
                 />
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -114,11 +113,9 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-                Top Repositories
-              </h3>
-              <div className="grid gap-4 md:grid-cols-3">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 sm:p-6">
+              <h3 className="text-xl font-semibold mb-4">Top Repositories</h3>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {topRepos.map((repo) => (
                   <div
                     key={repo.id}

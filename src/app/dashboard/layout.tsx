@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store/store";
 import Sidebar from "@/components/dashboard/Sidebar";
 import TopBar from "@/components/dashboard/TopBar";
+import MobileNav from "@/components/MobileNav";
 
 export default function DashboardLayout({
   children,
@@ -24,11 +25,22 @@ export default function DashboardLayout({
   }, [isAuthenticated, router]);
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      <TopBar />
-      <div className="flex">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Desktop sidebar */}
+      <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
         <Sidebar />
-        <main className="flex-1 p-6">{children}</main>
+      </div>
+
+      {/* Mobile navigation */}
+      <MobileNav />
+
+      {/* Main content area */}
+      <div className="lg:pl-64">
+        {/* Top bar */}
+        <TopBar />
+
+        {/* Page content */}
+        <main className="min-h-screen pt-16">{children}</main>
       </div>
     </div>
   );
