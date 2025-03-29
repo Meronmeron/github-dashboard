@@ -72,10 +72,17 @@ export default function SettingsPage() {
             <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
               <input
                 type="text"
-                className="flex-1 rounded-md"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="flex-1 p-3 rounded-md"
                 placeholder="GitHub username"
               />
-              <button className="w-full sm:w-auto">Update</button>
+              <button
+                type="submit"
+                className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md"
+              >
+                Update
+              </button>
             </div>
           </form>
         </div>
